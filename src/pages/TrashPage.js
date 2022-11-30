@@ -83,11 +83,8 @@ class TrashPage extends React.Component {
 }
 
 TrashPage.propTypes = {
-  notes: PropTypes.arrayOf(PropTypes.object).isRequired,
   defaultKeyword: PropTypes.string.isRequired,
   onSearch: PropTypes.func.isRequired,
-  onRestore: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
 };
 
 export default TrashPageWrapper;

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import {
   getNote,
@@ -20,8 +19,8 @@ function DetailPage() {
       <NoteDetail
         id={note.id}
         title={note.title}
-        body={note.body}
         createdAt={note.createdAt}
+        body={note.body}
         archived={note.archived}
         deleted={note.deleted}
         onArchive={unarchiveNote}
@@ -33,8 +32,8 @@ function DetailPage() {
       <NoteDetail
         id={note.id}
         title={note.title}
-        body={note.body}
         createdAt={note.createdAt}
+        body={note.body}
         archived={note.archived}
         deleted={note.deleted}
         onDelete={deleteNote}
@@ -47,8 +46,8 @@ function DetailPage() {
         <NoteDetail
           id={note.id}
           title={note.title}
-          body={note.body}
           createdAt={note.createdAt}
+          body={note.body}
           archived={note.archived}
           deleted={note.deleted}
           onArchive={archiveNote}
@@ -58,17 +57,5 @@ function DetailPage() {
     );
   }
 }
-
-DetailPage.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  archived: PropTypes.bool.isRequired,
-  deleted: PropTypes.bool.isRequired,
-  onArchive: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  onRestore: PropTypes.func.isRequired,
-};
 
 export default DetailPage;

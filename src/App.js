@@ -15,9 +15,7 @@ function App() {
     <div className="app">
       <NoteLogo />
       <BottomBar />
-      <sidebar>
-        <SideBar />
-      </sidebar>
+      <SideBar />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />

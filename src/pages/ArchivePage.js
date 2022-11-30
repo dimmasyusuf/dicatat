@@ -83,11 +83,8 @@ class ArchivePage extends React.Component {
 }
 
 ArchivePage.propTypes = {
-  notes: PropTypes.arrayOf(PropTypes.object).isRequired,
   defaultKeyword: PropTypes.string.isRequired,
-  onSearch: PropTypes.func.isRequired.isRequired,
-  onArchive: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
 };
 
 export default ArchivePageWrapper;

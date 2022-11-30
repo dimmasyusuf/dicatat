@@ -83,11 +83,7 @@ class HomePage extends React.Component {
 }
 
 HomePage.propTypes = {
-  notes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  defaultKeyword: PropTypes.string.isRequired,
   onSearch: PropTypes.func.isRequired,
-  onArchive: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
 };
 
 export default HomePageWrapper;

@@ -61,9 +61,6 @@ class NoteInput extends React.Component {
 }
 
 NoteInput.propTypes = {
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-  onInput: PropTypes.func.isRequired,
   createNote: PropTypes.func.isRequired,
 };
 
