@@ -14,6 +14,7 @@ function App() {
   return (
     <div className="app">
       <NoteLogo />
+      <BottomBar />
       <sidebar>
         <SideBar />
       </sidebar>
@@ -27,7 +28,6 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
-      <BottomBar />
     </div>
   );
 }
