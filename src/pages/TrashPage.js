@@ -83,7 +83,7 @@ class TrashPage extends React.Component {
 }
 
 TrashPage.propTypes = {
-  defaultKeyword: PropTypes.string.isRequired,
+  defaultKeyword: PropTypes.string,
   onSearch: PropTypes.func.isRequired,
 };
 
