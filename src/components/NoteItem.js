@@ -86,7 +86,7 @@ NoteItem.propTypes = {
   createdAt: PropTypes.string.isRequired,
   archived: PropTypes.bool.isRequired,
   deleted: PropTypes.bool.isRequired,
-  onArchive: PropTypes.func.isRequired,
+  onArchive: PropTypes.func,
   onDelete: PropTypes.func.isRequired,
   onRestore: PropTypes.func,
 };
