@@ -5,7 +5,6 @@ let notes = [
     body: "Babel merupakan tools open-source yang digunakan untuk mengubah sintaks ECMAScript 2015+ menjadi sintaks yang didukung oleh JavaScript engine versi lama. Babel sering dipakai ketika kita menggunakan sintaks terbaru termasuk sintaks JSX.",
     createdAt: "2022-04-14T04:27:34.572Z",
     archived: false,
-    deleted: false,
   },
   {
     id: "notes-2",
@@ -13,7 +12,6 @@ let notes = [
     body: "Functional component merupakan React component yang dibuat menggunakan fungsi JavaScript. Agar fungsi JavaScript dapat disebut component ia harus mengembalikan React element dan dipanggil layaknya React component.",
     createdAt: "2022-04-14T04:27:34.572Z",
     archived: false,
-    deleted: false,
   },
   {
     id: "notes-3",
@@ -21,7 +19,6 @@ let notes = [
     body: "Dalam konteks pemrograman JavaScript, modularization merupakan teknik dalam memecah atau menggunakan kode dalam berkas JavaScript secara terpisah berdasarkan tanggung jawabnya masing-masing.",
     createdAt: "2022-04-14T04:27:34.572Z",
     archived: false,
-    deleted: false,
   },
   {
     id: "notes-4",
@@ -29,7 +26,6 @@ let notes = [
     body: "Dalam konteks React component, lifecycle merupakan kumpulan method yang menjadi siklus hidup mulai dari component dibuat (constructor), dicetak (render), pasca-cetak (componentDidMount), dan sebagainya. ",
     createdAt: "2022-04-14T04:27:34.572Z",
     archived: false,
-    deleted: false,
   },
   {
     id: "notes-5",
@@ -37,7 +33,6 @@ let notes = [
     body: "ESM (ECMAScript Module) merupakan format modularisasi standar JavaScript.",
     createdAt: "2022-04-14T04:27:34.572Z",
     archived: false,
-    deleted: false,
   },
   {
     id: "notes-6",
@@ -45,7 +40,6 @@ let notes = [
     body: "Dalam konteks pemrograman JavaScript, module bundler merupakan tools yang digunakan untuk menggabungkan seluruh modul JavaScript yang digunakan oleh aplikasi menjadi satu berkas.",
     createdAt: "2022-04-14T04:27:34.572Z",
     archived: false,
-    deleted: false,
   },
 ];
 
@@ -59,18 +53,13 @@ function getNote(id) {
 }
 
 function getActiveNotes() {
-  const activeNotes = notes.filter((note) => !note.archived && !note.deleted);
+  const activeNotes = notes.filter((note) => !note.archived);
   return activeNotes;
 }
 
 function getArchivedNotes() {
-  const archivedNotes = notes.filter((note) => note.archived && !note.deleted);
+  const archivedNotes = notes.filter((note) => note.archived);
   return archivedNotes;
-}
-
-function getDeletedNotes() {
-  const deletedNotes = notes.filter((note) => note.deleted);
-  return deletedNotes;
 }
 
 function createNote({ title, body }) {
@@ -82,7 +71,6 @@ function createNote({ title, body }) {
       body,
       createdAt: new Date().toISOString(),
       archived: false,
-      deleted: false,
     },
   ];
 }
@@ -101,7 +89,7 @@ function deleteNote(id) {
 function archiveNote(id) {
   notes = notes.map((note) => {
     if (note.id === id) {
-      return { ...note, archived: true, deleted: false };
+      return { ...note, archived: true };
     }
     return note;
   });
@@ -110,27 +98,8 @@ function archiveNote(id) {
 function unarchiveNote(id) {
   notes = notes.map((note) => {
     if (note.id === id) {
-      return { ...note, archived: false, deleted: false };
+      return { ...note, archived: false };
     }
-    return note;
-  });
-}
-
-function trashNote(id) {
-  notes = notes.map((note) => {
-    if (note.id === id) {
-      return { ...note, deleted: true, archived: false };
-    }
-    return note;
-  });
-}
-
-function restoreNote(id) {
-  notes = notes.map((note) => {
-    if (note.id === id) {
-      return { ...note, deleted: false, archived: false };
-    }
-
     return note;
   });
 }
@@ -149,13 +118,10 @@ export {
   getAllNotes,
   getActiveNotes,
   getArchivedNotes,
-  getDeletedNotes,
   deleteNote,
   getNote,
   archiveNote,
   unarchiveNote,
-  trashNote,
-  restoreNote,
   createNote,
   showFormattedDate,
 };

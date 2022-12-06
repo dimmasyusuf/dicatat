@@ -1,24 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { LocaleConsumer } from "../contexts/LocaleContext";
 import NoteItem from "./NoteItem";
 
-function NoteList({ notes, onArchive, onDelete, onRestore }) {
+function NoteList({ notes, archiveNote, unarchiveNote, deleteNote }) {
   if (notes.length === 0) {
-    return <p className="note-empty">Tidak ada catatan untuk ditampilkan</p>;
+    return (
+      <LocaleConsumer>
+        {({ locale }) => {
+          return (
+            <p className="note-empty">
+              {locale === "id" ? "Tidak ada catatan" : "No notes"}
+            </p>
+          );
+        }}
+      </LocaleConsumer>
+    );
   } else {
     return (
       <div className="note-list">
         {notes.map((note) => (
           <NoteItem
             key={note.id}
-            id={note.id}
-            title={note.title}
-            body={note.body}
-            date={note.date}
-            onArchive={onArchive}
-            onDelete={onDelete}
-            onRestore={onRestore}
-            {...note}
+            notes={note}
+            archiveNote={archiveNote}
+            unarchiveNote={unarchiveNote}
+            deleteNote={deleteNote}
           />
         ))}
       </div>
@@ -28,9 +35,9 @@ function NoteList({ notes, onArchive, onDelete, onRestore }) {
 
 NoteList.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onArchive: PropTypes.func,
-  onDelete: PropTypes.func.isRequired,
-  onRestore: PropTypes.func,
+  archiveNote: PropTypes.func,
+  unarchiveNote: PropTypes.func,
+  deleteNote: PropTypes.func.isRequired,
 };
 
 export default NoteList;

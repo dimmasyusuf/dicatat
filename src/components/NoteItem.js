@@ -6,89 +6,46 @@ import {
   MdOutlineArchive,
   MdOutlineUnarchive,
   MdOutlineDelete,
-  MdOutlineDeleteForever,
-  MdOutlineRestoreFromTrash,
 } from "react-icons/md";
 import { showFormattedDate } from "../utils/data";
 
-function NoteItem({
-  id,
-  title,
-  body,
-  createdAt,
-  archived,
-  deleted,
-  onArchive,
-  onDelete,
-  onRestore,
-}) {
-  if (archived === true) {
-    return (
-      <div className="note-item">
-        <Link to={`/note/${id}`} className="note-item__link">
-          <h3 className="note-item__title">{title}</h3>
-          <p className="note-item__date">{showFormattedDate(createdAt)}</p>
-          <p className="note-item__body">{parser(body)}</p>
-        </Link>
-        <div className="note-item__button">
-          <button className="unarchive-button" onClick={() => onArchive(id)}>
+function NoteItem({ notes, archiveNote, unarchiveNote, deleteNote }) {
+  const { id, title, body, createdAt, archived } = notes;
+  const date = showFormattedDate(createdAt);
+
+  return (
+    <div className="note-item">
+      <Link to={`/detail/${id}`} className="note-item__link">
+        <h3 className="note-item__title">{title}</h3>
+        <p className="note-item__date">{date}</p>
+        <p className="note-item__body">{parser(body)}</p>
+      </Link>
+      <div className="note-item__button">
+        {archived ? (
+          <button
+            className="unarchive-button"
+            onClick={() => unarchiveNote(id)}
+          >
             <MdOutlineUnarchive />
           </button>
-          <button className="delete-button" onClick={() => onDelete(id)}>
-            <MdOutlineDelete />
-          </button>
-        </div>
-      </div>
-    );
-  } else if (deleted === true) {
-    return (
-      <div className="note-item">
-        <Link to={`/note/${id}`} className="note-item__link">
-          <h3 className="note-item__title">{title}</h3>
-          <p className="note-item__date">{showFormattedDate(createdAt)}</p>
-          <p className="note-item__body">{parser(body)}</p>
-        </Link>
-        <div className="note-item__button">
-          <button className="restore-button" onClick={() => onRestore(id)}>
-            <MdOutlineRestoreFromTrash />
-          </button>
-          <button className="delete-button" onClick={() => onDelete(id)}>
-            <MdOutlineDeleteForever />
-          </button>
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="note-item">
-        <Link to={`/note/${id}`} className="note-item__link">
-          <h3 className="note-item__title">{title}</h3>
-          <p className="note-item__date">{showFormattedDate(createdAt)}</p>
-          <p className="note-item__body">{parser(body)}</p>
-        </Link>
-        <div className="note-item__button">
-          <button className="archive-button" onClick={() => onArchive(id)}>
+        ) : (
+          <button className="archive-button" onClick={() => archiveNote(id)}>
             <MdOutlineArchive />
           </button>
-          <button className="delete-button" onClick={() => onDelete(id)}>
-            <MdOutlineDelete />
-          </button>
-        </div>
+        )}
+        <button className="delete-button" onClick={() => deleteNote(id)}>
+          <MdOutlineDelete />
+        </button>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 NoteItem.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  archived: PropTypes.bool.isRequired,
-  deleted: PropTypes.bool.isRequired,
-  onArchive: PropTypes.func,
-  onDelete: PropTypes.func.isRequired,
-  onRestore: PropTypes.func,
+  notes: PropTypes.object.isRequired,
+  archiveNote: PropTypes.func,
+  unarchiveNote: PropTypes.func,
+  deleteNote: PropTypes.func.isRequired,
 };
 
 export default NoteItem;

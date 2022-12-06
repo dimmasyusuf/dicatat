@@ -1,19 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import NoteInput from "../components/NoteInput";
-import { createNote } from "../utils/data";
+import { addNote } from "../utils/api";
 
 function CreatePage() {
   const navigate = useNavigate();
 
   function onCreateNoteHandler(note) {
-    createNote(note);
+    addNote(note);
     navigate("/");
   }
 
   return (
     <section className="create-page">
-      <NoteInput createNote={onCreateNoteHandler} />
+      <NoteInput addNote={onCreateNoteHandler} />
     </section>
   );
 }
