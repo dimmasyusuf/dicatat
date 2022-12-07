@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import PropTypes from "prop-types";
 import NoteDetail from "../components/NoteDetail";
 import { getNote, archiveNote, unarchiveNote, deleteNote } from "../utils/api";
 
@@ -47,12 +46,5 @@ function DetailPage() {
     />
   );
 }
-
-DetailPage.propTypes = {
-  notes: PropTypes.object,
-  archiveNote: PropTypes.func,
-  unarchiveNote: PropTypes.func,
-  deleteNote: PropTypes.func,
-};
 
 export default DetailPage;

@@ -27,8 +27,8 @@ function RegisterPage() {
   );
 }
 
-RegisterInput.propTypes = {
-  register: PropTypes.func.isRequired,
+RegisterPage.propTypes = {
+  register: PropTypes.func,
 };
 
 export default RegisterPage;

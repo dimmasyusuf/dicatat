@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import useSearch from "../hooks/useSearch";
 import NoteList from "../components/NoteList";
 import NavBar from "../components/NavBar";
@@ -48,11 +47,5 @@ function HomePage() {
     </section>
   );
 }
-
-HomePage.propTypes = {
-  notes: PropTypes.arrayOf(PropTypes.object),
-  archiveNote: PropTypes.func,
-  deleteNote: PropTypes.func,
-};
 
 export default HomePage;
