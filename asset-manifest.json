@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dicatat/static/css/main.ea478878.css",
+    "main.js": "/dicatat/static/js/main.07c00864.js",
+    "static/media/spinner-black.gif": "/dicatat/static/media/spinner-black.065f0237f7ac5c9665c8.gif",
+    "static/media/spinner-white.gif": "/dicatat/static/media/spinner-white.bfc8ccb2e658e2b77040.gif",
+    "index.html": "/dicatat/index.html",
+    "main.ea478878.css.map": "/dicatat/static/css/main.ea478878.css.map",
+    "main.07c00864.js.map": "/dicatat/static/js/main.07c00864.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea478878.css",
+    "static/js/main.07c00864.js"
+  ]
+}
